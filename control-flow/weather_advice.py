@@ -1,38 +1,34 @@
 def get_weather_input():
-    weather = input("What is the weather like today? (sunny, rainy, or cloudy): ")
-    if weather.lower() not in ["sunny", "rainy", "cloudy"]:
-        print("Invalid input. Please enter 'sunny', 'rainy', or 'cloudy'.")
+    weather = input("What is the weather like today? (sunny, rainy, or cold): ")
+    if weather.lower() not in ["sunny", "rainy", "cold"]:
+        print("Invalid input. Please enter 'sunny', 'rainy', or 'cold'.")
         return get_weather_input()
     return weather.lower()
 
-def get_clothing_suggestion(weather):
-    suggestion = []
-    
-    # Suggest clothing based on the weather
-    if weather == "sunny":
-        suggestion.append("Wear a t-shirt and sunglasses.")
-    elif weather == "rainy":
-        suggestion.append("Don't forget your umbrella and a raincoat.")
-    elif weather == "cloudy":
-        suggestion.append("Make sure to wear a warm coat and a scarf.")
+def get_recommendation(weather_input):
+    suggestions = []
+    if weather_input == "sunny":
+        suggestions.append("Wear a t-shirt and sunglasses.")
+    elif weather_input == "rainy":
+        suggestions.append("Don't forget your umbrella and a raincoat.")
+    elif weather_input == "cold":
+        suggestions.append("Make sure to wear a warm coat and a scarf.")
     else:
-        suggestion.append("Sorry, I don't have recommendations for this weather.")
-        
-    return suggestion
-
+        suggestions.append("Sorry, I don't have recommendations for this weather.")
+    return suggestions
+    
 def main():
     try:
         weather_input = get_weather_input()
+        recommendations = get_recommendation(weather_input)
         
-        recommendations = get_clothing_suggestion(weather_input)
-        
-        for i, recommendation in enumerate(recommendations, 1):
-            print(f"{i}. {recommendation}")
+        for suggestion in recommendations:
+            print(suggestion)
             
     except ValueError:
-        print("Please enter a valid answer for weather!")
+        print("Invalid input. Please enter a valid choice.")
     except Exception as e:
         print(f"An error occurred: {e}")
         
-if __name__== "__main__":
+if __name__ == "__main__":
     main()

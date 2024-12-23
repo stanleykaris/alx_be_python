@@ -22,4 +22,4 @@ match priority:
     case _:
         reminder = "Invalid priority level entered. Please try again."
     
-print(reminder)
+print()
